@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.onthetop.repository.BoardDao">
+
+	<select id="getBoardList" resultType="board">
+		SELECT
+		*
+		FROM
+		board
+	</select>
+
+	<insert id="insertBoard">
+		INSERT INTO board(
+		name,
+		passwd,
+		subject,
+		content,
+		ip,
+		reg_date,
+		readcount,
+		filename
+		)
+		VALUES(
+		#{name},
+		#{passwd},
+		#{subject},
+		#{content},
+		#{ip},
+		SYSDATE(),
+		#{readcount},
+		#{filename}
+		)
+	</insert>
+
+	<update id="updateReadCount">
+		UPDATE board SET
+		readcount=readcount+1
+		WHERE
+		num=#{num}
+	</update>
+
+	<select id="getBoardDetail" resultType="board">
+		SELECT
+		*
+		FROM
+		board
+		WHERE
+		num=#{num}
+	</select>
+
+	<update id="updateBoard">
+		UPDATE board SET
+		name=#{name},
+		passwd=#{passwd},
+		suject=#{subject},
+		content=#{content},
+		reg_date=SYSDTAE(),
+		filename=#{filename}
+		WHERE
+		num=#{num}
+	</update>
+
+	<delete id="deleteBoard">
+		DELETE
+		*
+		FROM
+		board
+		WHERE
+		num=#{num}
+	</delete>
+
+	<select id="getReply" resultType="Reply">
+		SELECT
+		*
+		FROM
+		reply
+		WHERE
+		board_num=#{num}
+	</select>
+
+	<insert id="insertReply">
+		INSERT INTO reply(
+		board_num,
+		name,
+		detail,
+		ip,
+		reg_date,
+		passwd
+		)
+		VALUES(
+		#{boardNum},
+		#{name},
+		#{detail},
+		#{ip},
+		SYSDATE(),
+		#{passwd}
+		)
+	</insert>
+
+	<delete id="deleteReply">
+		DELETE
+		*
+		FROM
+		reply
+		WHERE
+		re_num=#{reNum}
+	</delete>
+
+	<select id="getReplyOne" resultType="Reply">
+		SELECT
+		*
+		FROM
+		reply
+		WHERE
+		re_num=#{reNum}
+	</select>
+
+</mapper>

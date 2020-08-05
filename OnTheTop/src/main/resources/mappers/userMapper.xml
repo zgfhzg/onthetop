@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.onthetop.repository.UserDao">
+
+	<select id="getUserList" resultType="User">
+		SELECT
+		*
+		FROM
+		User
+	</select>
+
+	<insert id="insertUser">
+		INSERT INTO User(
+		email,
+		name,
+		password
+		)
+		VALUES(
+		#{email},
+		#{name},
+		#{password}
+		)
+	</insert>
+
+	<select id="getUserDetail" resultType="User">
+		SELECT
+		*
+		FROM
+		User
+		WHERE
+		num=#{num}
+	</select>
+
+	<update id="updateUser">
+		UPDATE User SET
+		name=#{name},
+		passwd=#{passwd},
+		suject=#{subject},
+		content=#{content},
+		reg_date=SYSDTAE(),
+		filename=#{filename}
+		WHERE
+		num=#{num}
+	</update>
+
+	<delete id="deleteUser">
+		DELETE
+		*
+		FROM
+		User
+		WHERE
+		num=#{num}
+	</delete>
+
+</mapper>
