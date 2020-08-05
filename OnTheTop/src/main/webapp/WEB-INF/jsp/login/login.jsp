@@ -53,6 +53,7 @@
                 </div>
                 <div id="btns">
                     <input type="submit" id="loginBtn" value="로그인" onclick="loginCheck();" />
+                    <input type="button" id="signupBtn" value="회원가입" onclick="location.href = '/login/signup'"/>
                 </div>
             </div>
         </div>

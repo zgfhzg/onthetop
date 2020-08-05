@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sign In</title>
+<title>Sign Up</title>
 </head>
 <body>
     <form method="POST" action="/login/signin">
