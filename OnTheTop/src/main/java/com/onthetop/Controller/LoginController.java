@@ -47,7 +47,7 @@ public class LoginController {
 		return "/login/signup";
 	}
 
-	@RequestMapping(value = "signin", method = RequestMethod.POST)
+	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public String signin(@ModelAttribute User user) throws Exception {
 
 		userService.insertUser(user);
